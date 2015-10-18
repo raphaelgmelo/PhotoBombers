@@ -9,6 +9,8 @@
 #import "PhotosViewController.h"
 #import "PhotoCell.h"
 
+#import <SimpleAuth.h>
+
 @interface PhotosViewController ()
 
 @end
@@ -37,16 +39,19 @@
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURL *url = [[NSURL alloc] initWithString:@"http://blog.teamtreehouse.com/api/get_recent_summary/"];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-        NSString *text = [[NSString alloc] initWithContentsOfURL:location encoding:NSUTF8StringEncoding error:nil];
-        NSLog(@"Response %@", text);
+//    NSURLSession *session = [NSURLSession sharedSession];
+//    NSURL *url = [[NSURL alloc] initWithString:@"http://blog.teamtreehouse.com/api/get_recent_summary/"];
+//    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+//    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+//        NSString *text = [[NSString alloc] initWithContentsOfURL:location encoding:NSUTF8StringEncoding error:nil];
+//        NSLog(@"Response %@", text);
+//    }];
+//    
+//    [task resume];
+    
+    [SimpleAuth authorize:@"instagram" completion:^(id responseObject, NSError *error) {
+        NSLog(@"%@", responseObject);
     }];
-    
-    [task resume];
-    
     
 }
 

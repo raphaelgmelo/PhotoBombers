@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "PhotosViewController.h"
 
+#import <SimpleAuth.h>
+
 @interface AppDelegate ()
 
 @end
@@ -18,6 +20,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
+    SimpleAuth.configuration[@"instagram"] = @{
+       @"client_id" : @"71583dd9581b40c7865803c3e7c69f95",
+       SimpleAuthRedirectURIKey : @"photobombers://auth/instagram"
+       };
+    
+    
     PhotosViewController *photosViewController = [[PhotosViewController alloc] init];
     
     
