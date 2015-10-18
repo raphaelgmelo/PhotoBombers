@@ -8,6 +8,7 @@
 
 #import "PhotosViewController.h"
 #import "PhotoCell.h"
+#import "DetailViewController.h"
 
 #import <SimpleAuth.h>
 
@@ -104,6 +105,15 @@
     }];
     
     [task resume];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+
+    NSDictionary *photo = self.photos[indexPath.row];
+    DetailViewController *viewController = [[DetailViewController alloc] init];
+    viewController.photo = photo;
+    
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 @end
