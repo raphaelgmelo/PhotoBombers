@@ -14,6 +14,7 @@
 		AEA2A8B11BD3A49B00CF2A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEA2A8B01BD3A49B00CF2A5F /* Assets.xcassets */; };
 		AEA2A8B41BD3A49B00CF2A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA2A8B21BD3A49B00CF2A5F /* LaunchScreen.storyboard */; };
 		AEA2A8BD1BD3A57500CF2A5F /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA2A8BC1BD3A57500CF2A5F /* PhotosViewController.m */; settings = {ASSET_TAGS = (); }; };
+		AEA2A8C01BD3AE1000CF2A5F /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA2A8BF1BD3AE1000CF2A5F /* PhotoCell.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		AEA2A8B51BD3A49B00CF2A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AEA2A8BB1BD3A57500CF2A5F /* PhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotosViewController.h; sourceTree = "<group>"; };
 		AEA2A8BC1BD3A57500CF2A5F /* PhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotosViewController.m; sourceTree = "<group>"; };
+		AEA2A8BE1BD3AE1000CF2A5F /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoCell.h; path = PhotoBombers/PhotoCell.h; sourceTree = "<group>"; };
+		AEA2A8BF1BD3AE1000CF2A5F /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoCell.m; path = PhotoBombers/PhotoCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +48,8 @@
 		AEA2A8981BD3A49B00CF2A5F = {
 			isa = PBXGroup;
 			children = (
+				AEA2A8BE1BD3AE1000CF2A5F /* PhotoCell.h */,
+				AEA2A8BF1BD3AE1000CF2A5F /* PhotoCell.m */,
 				AEA2A8A31BD3A49B00CF2A5F /* PhotoBombers */,
 				AEA2A8A21BD3A49B00CF2A5F /* Products */,
 			);
@@ -156,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEA2A8AC1BD3A49B00CF2A5F /* ViewController.m in Sources */,
+				AEA2A8C01BD3AE1000CF2A5F /* PhotoCell.m in Sources */,
 				AEA2A8BD1BD3A57500CF2A5F /* PhotosViewController.m in Sources */,
 				AEA2A8A91BD3A49B00CF2A5F /* AppDelegate.m in Sources */,
 				AEA2A8A61BD3A49B00CF2A5F /* main.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "PhotosViewController.h"
+#import "PhotoCell.h"
 
 @interface PhotosViewController ()
 
@@ -30,7 +31,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"photo"];
+    [self.collectionView registerClass:[PhotoCell class] forCellWithReuseIdentifier:@"photo"];
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
