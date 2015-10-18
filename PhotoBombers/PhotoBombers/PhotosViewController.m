@@ -13,6 +13,8 @@
 
 @interface PhotosViewController ()
 
+@property (nonatomic) NSString *accessToken;
+
 @end
 
 @implementation PhotosViewController
@@ -39,19 +41,36 @@
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
-//    NSURLSession *session = [NSURLSession sharedSession];
-//    NSURL *url = [[NSURL alloc] initWithString:@"http://blog.teamtreehouse.com/api/get_recent_summary/"];
-//    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-//    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-//        NSString *text = [[NSString alloc] initWithContentsOfURL:location encoding:NSUTF8StringEncoding error:nil];
-//        NSLog(@"Response %@", text);
-//    }];
-//    
-//    [task resume];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    self.accessToken = [userDefaults objectForKey:@"accessToken"];
     
-    [SimpleAuth authorize:@"instagram" completion:^(id responseObject, NSError *error) {
-        NSLog(@"%@", responseObject);
+    if (self.accessToken == nil) {
+        
+        [SimpleAuth authorize:@"instagram" completion:^(id responseObject, NSError *error) {
+            
+            NSString *accessToken = responseObject[@"credentials"][@"token"];
+            [userDefaults setObject:accessToken forKey:@"accessToken"];
+            [userDefaults synchronize];
+            
+        }];
+        
+    }
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSString *urlString = [[NSString alloc] initWithFormat:@"https://api.instagram.com/v1/tags/photobomb/media/recent?access_token=%@", self.accessToken ];
+    
+    NSURL *url = [[NSURL alloc] initWithString:urlString];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    
+    
+    // ASYNC TASK
+    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+        NSString *text = [[NSString alloc] initWithContentsOfURL:location encoding:NSUTF8StringEncoding error:nil];
+        NSLog(@"Response %@", text);
     }];
+
+    [task resume];
+
     
 }
 
