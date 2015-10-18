@@ -14,6 +14,7 @@
 @interface PhotosViewController ()
 
 @property (nonatomic) NSString *accessToken;
+@property (nonatomic) NSArray *photos;
 
 @end
 
@@ -30,6 +31,7 @@
     return (self = [super initWithCollectionViewLayout:layout]);
     
 }
+
 
 
 -(void)viewDidLoad{
@@ -56,6 +58,28 @@
         
     }
     
+    [self refresh];
+
+    
+}
+
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return [self.photos count];
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    PhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"photo" forIndexPath:indexPath];
+    
+    cell.backgroundColor = [UIColor lightGrayColor];
+    cell.photo = self.photos[indexPath.row];
+    
+    return cell;
+}
+
+
+- (void)refresh {
     NSURLSession *session = [NSURLSession sharedSession];
     NSString *urlString = [[NSString alloc] initWithFormat:@"https://api.instagram.com/v1/tags/photobomb/media/recent?access_token=%@", self.accessToken ];
     
@@ -65,32 +89,19 @@
     
     // ASYNC TASK
     NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-
+        
         NSData *data = [[NSData alloc] initWithContentsOfURL:location];
         NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
         
-        NSArray *photos = [responseDictionary valueForKeyPath:@"data.images.standard_resolution.url"];
+        self.photos = [responseDictionary valueForKeyPath:@"data"];
         
-        NSLog(@"%@", photos);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.collectionView reloadData];
+        });
+        
     }];
-
+    
     [task resume];
-
-    
-}
-
-
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 10;
-}
-
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"photo" forIndexPath:indexPath];
-    
-    cell.backgroundColor = [UIColor lightGrayColor];
-    
-    return cell;
 }
 
 @end
