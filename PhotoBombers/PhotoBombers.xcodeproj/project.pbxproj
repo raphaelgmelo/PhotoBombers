@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		899203828FFC815AECDC185B /* libPods-PhotoBombers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB2F880A65B22A9BC6D9FB5 /* libPods-PhotoBombers.a */; };
+		AE8B4AD21BD4176900332BEC /* PhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE8B4AD11BD4176900332BEC /* PhotoController.m */; settings = {ASSET_TAGS = (); }; };
 		AEA2A8A61BD3A49B00CF2A5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA2A8A51BD3A49B00CF2A5F /* main.m */; };
 		AEA2A8A91BD3A49B00CF2A5F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA2A8A81BD3A49B00CF2A5F /* AppDelegate.m */; };
 		AEA2A8AC1BD3A49B00CF2A5F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA2A8AB1BD3A49B00CF2A5F /* ViewController.m */; };
@@ -20,6 +21,8 @@
 
 /* Begin PBXFileReference section */
 		6767241D24708CE50C8DC29C /* Pods-PhotoBombers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoBombers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoBombers/Pods-PhotoBombers.debug.xcconfig"; sourceTree = "<group>"; };
+		AE8B4AD01BD4176900332BEC /* PhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoController.h; sourceTree = "<group>"; };
+		AE8B4AD11BD4176900332BEC /* PhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoController.m; sourceTree = "<group>"; };
 		AEA2A8A11BD3A49B00CF2A5F /* PhotoBombers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoBombers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEA2A8A51BD3A49B00CF2A5F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AEA2A8A71BD3A49B00CF2A5F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -92,6 +95,8 @@
 				AEA2A8B21BD3A49B00CF2A5F /* LaunchScreen.storyboard */,
 				AEA2A8B51BD3A49B00CF2A5F /* Info.plist */,
 				AEA2A8A41BD3A49B00CF2A5F /* Supporting Files */,
+				AE8B4AD01BD4176900332BEC /* PhotoController.h */,
+				AE8B4AD11BD4176900332BEC /* PhotoController.m */,
 			);
 			path = PhotoBombers;
 			sourceTree = "<group>";
@@ -237,6 +242,7 @@
 			files = (
 				AEA2A8AC1BD3A49B00CF2A5F /* ViewController.m in Sources */,
 				AEA2A8C01BD3AE1000CF2A5F /* PhotoCell.m in Sources */,
+				AE8B4AD21BD4176900332BEC /* PhotoController.m in Sources */,
 				AEA2A8BD1BD3A57500CF2A5F /* PhotosViewController.m in Sources */,
 				AEA2A8A91BD3A49B00CF2A5F /* AppDelegate.m in Sources */,
 				AEA2A8A61BD3A49B00CF2A5F /* main.m in Sources */,
