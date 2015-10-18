@@ -31,11 +31,23 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
+    self.title = @"Photo Bombers";
+    
     [self.collectionView registerClass:[PhotoCell class] forCellWithReuseIdentifier:@"photo"];
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
-    self.title = @"Photo Bombers";
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURL *url = [[NSURL alloc] initWithString:@"http://blog.teamtreehouse.com/api/get_recent_summary/"];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+        NSString *text = [[NSString alloc] initWithContentsOfURL:location encoding:NSUTF8StringEncoding error:nil];
+        NSLog(@"Response %@", text);
+    }];
+    
+    [task resume];
+    
+    
 }
 
 
