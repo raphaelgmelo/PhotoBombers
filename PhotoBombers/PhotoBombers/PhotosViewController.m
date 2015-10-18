@@ -48,12 +48,13 @@
     
     if (self.accessToken == nil) {
         
-        [SimpleAuth authorize:@"instagram" completion:^(id responseObject, NSError *error) {
+        [SimpleAuth authorize:@"instagram" options:@{@"scope": @[@"likes"]} completion:^(id responseObject, NSError *error) {
             
-            NSString *accessToken = responseObject[@"credentials"][@"token"];
-            [userDefaults setObject:accessToken forKey:@"accessToken"];
+            self.accessToken = responseObject[@"credentials"][@"token"];
+            [userDefaults setObject:self.accessToken forKey:@"accessToken"];
             [userDefaults synchronize];
             
+            [self refresh];
         }];
         
     }
@@ -80,6 +81,7 @@
 
 
 - (void)refresh {
+    
     NSURLSession *session = [NSURLSession sharedSession];
     NSString *urlString = [[NSString alloc] initWithFormat:@"https://api.instagram.com/v1/tags/photobomb/media/recent?access_token=%@", self.accessToken ];
     
