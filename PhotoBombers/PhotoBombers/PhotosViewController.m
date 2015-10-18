@@ -18,6 +18,10 @@
 
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     
+    layout.itemSize = CGSizeMake(106.0,106.0);
+    layout.minimumInteritemSpacing = 1.0;
+    layout.minimumLineSpacing = 1.0;
+    
     return (self = [super initWithCollectionViewLayout:layout]);
     
 }
@@ -29,6 +33,8 @@
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"photo"];
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
+    
+    self.title = @"Photo Bombers";
 }
 
 
